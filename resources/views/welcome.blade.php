@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Under Construction 
+                    Stay Hungry, Stay Foolish 
                 </div>
 
                 <!-- <div class="links">
