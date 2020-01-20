@@ -4,17 +4,13 @@
         <div class="socials-media text-center">
 
         <ul class="list-unstyled">
-            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-            <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-            <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-            <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
-            <li><a href="#"><i class="ion-social-dribbble"></i></a></li>
+            <li><a href="https://github.com/IrawanNugroho"><i class="ion-social-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/irawan-setyo-adhi-nugroho-4a5018b6/"><i class="ion-social-linkedin"></i></a></li>
         </ul>
 
         </div>
 
-        <p>&copy; Copyrights Folio. All rights reserved.</p>
+        <!-- <p>&copy; Copyrights Folio. All rights reserved.</p> -->
 
         <div class="credits">
         <!--
@@ -23,7 +19,7 @@
             Licensing information: https://bootstrapmade.com/license/
             Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Folio
         -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://bootstrapmade.com/">Nugrohouse.com</a>
         </div>
 
     </div>

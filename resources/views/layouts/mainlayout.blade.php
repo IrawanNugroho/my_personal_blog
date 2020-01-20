@@ -9,6 +9,8 @@
             
             @include('layouts.partials.header')
 
+            @include('layouts.partials.about_us')
+
             @yield('content')
 
             @include('layouts.partials.footer')

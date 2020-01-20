@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Folio - Personal Portfolio</title>
+<title>Nugrohouse - Personal Portfolio</title>
 <meta content="" name="keywords">
 <meta content="" name="description">
 
