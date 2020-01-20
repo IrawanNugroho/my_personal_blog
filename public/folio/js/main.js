@@ -79,7 +79,7 @@ $(document).ready(function() {
 
   $(function() {
     typed.typed({
-      strings: ["Irawan Setyo Adhi Nugroho.", "Software Engineer."],
+      strings: ["Irawan Setyo Adhi Nugroho.", "Designer.", "Developer.", "Freelancer.", "Photographer"],
       typeSpeed: 100,
       loop: true,
     });

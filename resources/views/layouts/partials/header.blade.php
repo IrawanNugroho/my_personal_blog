@@ -3,7 +3,7 @@
     <div class="container">
         <div class="header-content">
             <h1>I'm <span class="typed"></span></h1>
-            <p>designer, developeur, photographer</p>
+            <p>PHP, WordPress, Laravel, Lumen, Python, Django</p>
 
             <ul class="list-unstyled list-social">
                 <li><a href="#"><i class="ion-social-facebook"></i></a></li>
