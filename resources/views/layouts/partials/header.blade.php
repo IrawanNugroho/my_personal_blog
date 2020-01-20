@@ -6,12 +6,8 @@
             <p>PHP, WordPress, Laravel, Lumen, Python, Django</p>
 
             <ul class="list-unstyled list-social">
-                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
-                <li><a href="#"><i class="ion-social-dribbble"></i></a></li>
+            <li><a href="https://github.com/IrawanNugroho"><i class="ion-social-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/irawan-setyo-adhi-nugroho-4a5018b6/"><i class="ion-social-linkedin"></i></a></li>
             </ul>
         </div>
     </div>
