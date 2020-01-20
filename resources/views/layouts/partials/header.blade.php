@@ -3,7 +3,7 @@
     <div class="container">
         <div class="header-content">
             <h1>I'm <span class="typed"></span></h1>
-            <p>PHP, WordPress, Laravel, Lumen, Python, Django</p>
+            <p>Python, Django, PHP, Laravel, Lumen, WordPress</p>
 
             <ul class="list-unstyled list-social">
             <li><a href="https://github.com/IrawanNugroho"><i class="ion-social-github"></i></a></li>
