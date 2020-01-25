@@ -47,7 +47,7 @@
 
             <i class="ion-ios-lightbulb-outline"></i>
             <span>Stay Hungry, Stay Foolish</span>
-            <p class="separator">I love to read. It make me growth everyday.</p>
+            <p class="separator">I love to read. It makes me growth everyday.</p>
 
           </div>
 
