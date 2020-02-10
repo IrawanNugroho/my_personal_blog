@@ -13,7 +13,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return "Hello Su!";
+        
+        return view('article/index');
     }
 
     /**
@@ -23,7 +24,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('article/create');
     }
 
     /**
