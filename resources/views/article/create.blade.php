@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('New Article') }}</div>
 
@@ -12,9 +12,9 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
+                            <label for="title" class="col-md-2 col-form-label text-md-right">{{ __('Title') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-9">
                                 <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
 
                                 @error('title')
@@ -26,10 +26,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="excerpt" class="col-md-4 col-form-label text-md-right">{{ __('Excerpt') }}</label>
+                            <label for="excerpt" class="col-md-2 col-form-label text-md-right">{{ __('Excerpt') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="excerpt" type="excerpt" class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" value="{{ old('excerpt') }}" required autocomplete="excerpt">
+                            <div class="col-md-9">
+                                <textarea id="excerpt" type="excerpt" class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" value="{{ old('excerpt') }}" required>
+                                </textarea>
 
                                 @error('excerpt')
                                     <span class="invalid-feedback" role="alert">
@@ -40,12 +41,13 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="content" class="col-md-2 col-form-label text-md-right">{{ __('Content') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                            <div class="col-md-9">
+                                <textarea id="content" type="text" class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}" required>
+                                </textarea>
 
-                                @error('password')
+                                @error('content')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -53,16 +55,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-9 offset-md-5">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Save') }}
                                 </button>
@@ -76,6 +70,12 @@
                 </div>
             </div>
         </div>
+
+        <!-- <div class="col-md-2">
+            <div class="card-header">{{ __('Menus') }}</div>
+            <div class="card-body">
+            </div>
+        </div> -->
     </div>
 </div>
 @endsection
