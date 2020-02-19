@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
     <script>
         tinymce.init({
             selector:'textarea.content',
