@@ -44,7 +44,7 @@
                             <label for="content" class="col-md-2 col-form-label text-md-right">{{ __('Content') }}</label>
 
                             <div class="col-md-9">
-                                <textarea id="content" type="text" class="form-control @error('content') is-invalid @enderror content" name="content" value="{{ old('content') }}" required>
+                                <textarea id="content" rows="20" type="text" class="form-control @error('content') is-invalid @enderror content" name="content" value="{{ old('content') }}" required>
                                 </textarea>
 
                                 @error('content')
