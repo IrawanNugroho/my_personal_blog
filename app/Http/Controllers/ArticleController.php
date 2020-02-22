@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
+use App\Article;
 
 class ArticleController extends Controller
 {
@@ -35,7 +37,29 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validatedData = $request->validate([
+            'title'     => 'required|string|max:128',
+            'slug'      => 'required|string|max:80',
+            'excerpt'   => 'nullable|string|max:255',
+            'content'   => 'nullable|string|max:15000',
+            'tags'      => 'nullable|string|max:25',
+            'author'    => 'nullable|string|max:25',
+            'status'    => 'required|integer|max:2'
+        ]);
+
+        $article = new Article;
+        $article->title     = $request->title;
+        $article->slug      = $request->slug;
+        $article->excerpt   = $request->excerpt;
+        $article->content   = $request->content;
+        $article->author    = $request->author;
+        $article->slug      = $request->slug;
+        $article->status_id = $request->status;
+        $article->created_by= Auth::id();
+        $article->updated_by= Auth::id();
+        $article->save();
+
+        return $request;
     }
 
     /**
