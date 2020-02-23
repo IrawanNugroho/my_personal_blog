@@ -8,6 +8,12 @@ use App\Article;
 
 class ArticleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -70,7 +76,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('article/edit', ['article' => Article::findOrFail($id)]);
     }
 
     /**
@@ -79,9 +85,31 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title'     => 'required|string|max:128',
+            'slug'      => 'required|string|max:80',
+            'excerpt'   => 'nullable|string|max:255',
+            'content'   => 'nullable|string|max:15000',
+            'tags'      => 'nullable|string|max:25',
+            'author'    => 'nullable|string|max:25',
+            'status'    => 'required|integer|max:2'
+        ]);
+
+        $article = Article::find($id);
+        $article->title     = $request->title;
+        $article->slug      = $request->slug;
+        $article->excerpt   = $request->excerpt;
+        $article->content   = $request->content;
+        $article->author    = $request->author;
+        $article->slug      = $request->slug;
+        $article->status_id = $request->status;
+        $article->created_by= Auth::id();
+        $article->updated_by= Auth::id();
+        $article->save();
+
+        return view('article/edit', ['article' => Article::findOrFail($id)])->with('message', 'Updated Successfully!');
     }
 
     /**

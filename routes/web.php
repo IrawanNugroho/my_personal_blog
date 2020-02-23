@@ -22,6 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'article'], function(){
     route::get('/', 'ArticleController@index')->name('articles.index');
     route::get('/create', 'ArticleController@create')->name('articles.create');
+    route::get('/edit/{id}', 'ArticleController@show')->where(['id' => '[0-9]+'])->name('articles.show');
+
     route::post('/', 'ArticleController@store')->name('articles.store');
+    route::post('/{id}', 'ArticleController@edit')->name('articles.edit');
     
 });
