@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use App\Article;
+use App\Status;
 
 class ArticleController extends Controller
 {
@@ -32,7 +33,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('article/create');
+        // get list of status
+        $list_status = Status::where('active', 1)->get();
+        return view('article/create')->with('list_status', $list_status);
     }
 
     /**

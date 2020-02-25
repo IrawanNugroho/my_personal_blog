@@ -111,10 +111,13 @@
 
                         <div class="form-group row">
                             <label for="status" class="col-md-2 col-form-label text-md-right">{{ __('Status') }}</label>
-
-                            <div class="col-md-9">
-                                <input id="status" type="text" class="form-control @error('status') is-invalid @enderror" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
-
+                            <div class="col-md-2">
+                                <select class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="status" name="status">
+                                    @foreach ($list_status as $status)
+                                        <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                    @endforeach
+                                </select>
+                                
                                 @error('status')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
