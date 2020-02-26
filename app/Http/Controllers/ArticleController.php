@@ -80,6 +80,17 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
+        
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
         $article = DB::table('articles')
                     ->join('statuses', 'statuses.id', '=', 'articles.status_id')
                     ->select('articles.id', 'articles.title', 'articles.content', 'articles.excerpt', 'articles.author', 'articles.slug', 'articles.slug as tags', 'statuses.id as status_id')
@@ -91,12 +102,13 @@ class ArticleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Update the specified resource in storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
             'title'     => 'required|string|max:128',
@@ -121,18 +133,6 @@ class ArticleController extends Controller
         $article->save();
 
         return view('article/index')->with('message', 'Updated Successfully!');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**

@@ -27,7 +27,7 @@
         <div class="card">
             <div class="card-header">{{ __('Edit Article') }}</div>
             <div class="card-body">
-                <form method="POST" action="{{ route('articles.edit', ['id' => $article->id]) }}">
+                <form method="POST" action="{{ route('articles.update', ['id' => $article->id]) }}">
                     @csrf
 
                     <div class="form-group row">
