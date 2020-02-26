@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use DB;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Status;
@@ -34,7 +35,7 @@ class ArticleController extends Controller
     public function create()
     {
         // get list of status
-        $list_status = Status::where('active', 1)->get();
+        $list_status = Status::where('active', 1)->get(['id', 'name']);
         return view('article/create')->with('list_status', $list_status);
     }
 
@@ -68,7 +69,7 @@ class ArticleController extends Controller
         $article->updated_by= Auth::id();
         $article->save();
 
-        return $request;
+        return view('article/index');
     }
 
     /**
@@ -79,7 +80,14 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        return view('article/edit', ['article' => Article::findOrFail($id)]);
+        $article = DB::table('articles')
+                    ->join('statuses', 'statuses.id', '=', 'articles.status_id')
+                    ->select('articles.id', 'articles.title', 'articles.content', 'articles.excerpt', 'articles.author', 'articles.slug', 'articles.slug as tags', 'statuses.id as status_id')
+                    ->where('articles.active', 1)
+                    ->where('articles.id', '=', $id)
+                    ->first();
+        $list_status = Status::where('active', 1)->get(['id', 'name']);
+        return view('article/edit', ['article' => $article, 'list_status' => $list_status]);
     }
 
     /**
@@ -112,7 +120,7 @@ class ArticleController extends Controller
         $article->updated_by= Auth::id();
         $article->save();
 
-        return view('article/edit', ['article' => Article::findOrFail($id)])->with('message', 'Updated Successfully!');
+        return view('article/index')->with('message', 'Updated Successfully!');
     }
 
     /**
