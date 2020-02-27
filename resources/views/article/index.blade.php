@@ -23,7 +23,7 @@
         </div>
         @endif
             <div class="card">
-                <div class="card-header">Articles <button class="btn-small btn-success float-right" onclick="window.location='{{ route("articles.create") }}'">+</button> </div>
+                <div class="card-header">Article<button class="btn-small btn-success float-right" onclick="window.location='{{ route("articles.create") }}'">+</button> </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -32,7 +32,29 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th><center>Title</center></th>
+                            <th><center>Last Updated</center></th>
+                            <th><center>Actions</center></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($list_article as $item)
+                            <tr>
+                                <td><a href="{{ route('articles.show', ['id'=> $item->id]) }}">{{$item->title}}</a></td>
+                                <td><center>{{$item->updated_at}}</center></td>
+                                <td>
+                                    <center>
+                                        <button type="button" class="btn-small btn-warning" onclick="window.location='{{ route("articles.edit", ["id" => $item->id]) }}'">Edit</button>
+                                    </center>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
                 </div>
             </div>
         </div>

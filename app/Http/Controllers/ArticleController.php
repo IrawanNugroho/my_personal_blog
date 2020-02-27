@@ -23,8 +23,9 @@ class ArticleController extends Controller
      */
     public function index()
     {
+        $list_article = Article::where('active',1)->get(['id', 'title', 'created_at', 'updated_at']);
         
-        return view('article/index');
+        return view('article/index', ['list_article' => $list_article]);
     }
 
     /**
@@ -80,7 +81,14 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        
+        $article = DB::table('articles')
+                    ->join('statuses', 'statuses.id', '=', 'articles.status_id')
+                    ->select('articles.id', 'articles.title', 'articles.content', 'articles.excerpt', 'articles.author', 'articles.slug', 'articles.slug as tags', 'statuses.id as status_id')
+                    ->where('articles.active', 1)
+                    ->where('articles.id', '=', $id)
+                    ->first();
+        $list_status = Status::where('active', 1)->get(['id', 'name']);
+        return view('article/show', ['article' => $article, 'list_status' => $list_status]);
     }
 
     /**

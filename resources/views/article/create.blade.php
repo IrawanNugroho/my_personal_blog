@@ -23,7 +23,7 @@
         </div>
         @endif
             <div class="card">
-                <div class="card-header">{{ __('New Article') }}</div>
+                <div class="card-header">{{ __('Article') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('articles.store') }}">
