@@ -23,7 +23,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $list_article = Article::where('active',1)->get(['id', 'title', 'created_at', 'updated_at']);
+        $list_article = DB::table('articles')
+                        ->join('statuses', 'statuses.id', '=', 'articles.status_id')
+                        ->where('articles.active',1)
+                        ->select('articles.id', 'articles.title', 'articles.updated_at', 'statuses.name as status')
+                        ->paginate(15);
         
         return view('article/index', ['list_article' => $list_article]);
     }
@@ -140,7 +144,9 @@ class ArticleController extends Controller
         $article->updated_by= Auth::id();
         $article->save();
 
-        return view('article/index')->with('message', 'Updated Successfully!');
+        $list_article = Article::where('active',1)->get(['id', 'title', 'created_at', 'updated_at']);
+        
+        return view('article/index', ['list_article' => $list_article])->with('message', 'Updated Successfully!');
     }
 
     /**
