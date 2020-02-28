@@ -87,7 +87,8 @@ class ArticleController extends Controller
     {
         $article = DB::table('articles')
                     ->join('statuses', 'statuses.id', '=', 'articles.status_id')
-                    ->select('articles.id', 'articles.title', 'articles.content', 'articles.excerpt', 'articles.author', 'articles.slug', 'articles.slug as tags', 'statuses.id as status_id')
+                    ->join('users', 'users.id', '=', 'articles.updated_by')
+                    ->select('articles.id', 'articles.title', 'articles.content', 'articles.excerpt', 'articles.author', 'articles.slug', 'articles.slug as tags', 'statuses.id as status_id', 'articles.created_at', 'users.name as updated_by', 'articles.updated_at  as last_update')
                     ->where('articles.active', 1)
                     ->where('articles.id', '=', $id)
                     ->first();

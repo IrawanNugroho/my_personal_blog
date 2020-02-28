@@ -136,6 +136,48 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label for="updated_by" class="col-md-2 col-form-label text-md-right">{{ __('Updated By') }}</label>
+                    
+                        <div class="col-md-9">
+                            <input id="updated_by" type="text" class="form-control @error('updated_by') is-invalid @enderror" name="updated_by" value="{{ $article->updated_by }}" disabled>
+                    
+                            @error('updated_by')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="last_update" class="col-md-2 col-form-label text-md-right">{{ __('Last Update') }}</label>
+                    
+                        <div class="col-md-9">
+                            <input id="last_update" type="text" class="form-control @error('last_update') is-invalid @enderror" name="last_update" value="{{ $article->last_update }}" disabled>
+                    
+                            @error('last_update')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="created_at" class="col-md-2 col-form-label text-md-right">{{ __('Created At') }}</label>
+
+                        <div class="col-md-9">
+                            <input id="created_at" type="text" class="form-control @error('created_at') is-invalid @enderror" name="created_at" value="{{ $article->created_at }}" disabled>
+
+                            @error('created_at')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
                     <div class="form-group row mb-0">
                         <div class="col-md-9 offset-md-5">
                             <button class="btn btn-info" onclick="window.location='{{ route("articles.index") }}'">
