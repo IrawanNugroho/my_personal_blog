@@ -7,6 +7,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Status;
+use App\Category;
 
 class ArticleController extends Controller
 {
@@ -92,6 +93,7 @@ class ArticleController extends Controller
                     ->where('articles.active', 1)
                     ->where('articles.id', '=', $id)
                     ->first();
+
         $list_status = Status::where('active', 1)->get(['id', 'name']);
         return view('article/show', ['article' => $article, 'list_status' => $list_status]);
     }
@@ -106,12 +108,16 @@ class ArticleController extends Controller
     {
         $article = DB::table('articles')
                     ->join('statuses', 'statuses.id', '=', 'articles.status_id')
-                    ->select('articles.id', 'articles.title', 'articles.content', 'articles.excerpt', 'articles.author', 'articles.slug', 'articles.slug as tags', 'statuses.id as status_id')
+                    ->join('categories', 'categories.id', '=', 'articles.category_id')
+                    ->select('articles.id', 'articles.title', 'articles.content', 'articles.excerpt', 'articles.author', 'articles.slug', 'categories.id as category_id', 'statuses.id as status_id')
                     ->where('articles.active', 1)
                     ->where('articles.id', '=', $id)
                     ->first();
+
         $list_status = Status::where('active', 1)->get(['id', 'name']);
-        return view('article/edit', ['article' => $article, 'list_status' => $list_status]);
+        $list_category = Category::where('active',1)->get(['id', 'name']);
+        
+        return view('article/edit', ['list_category' => $list_category, 'article' => $article, 'list_status' => $list_status]);
     }
 
     /**
@@ -141,13 +147,19 @@ class ArticleController extends Controller
         $article->author    = $request->author;
         $article->slug      = $request->slug;
         $article->status_id = $request->status;
+        $article->category_id = $request->category;
         $article->created_by= Auth::id();
         $article->updated_by= Auth::id();
         $article->save();
 
-        $list_article = Article::where('active',1)->get(['id', 'title', 'created_at', 'updated_at']);
         
-        return view('article/index', ['list_article' => $list_article])->with('message', 'Updated Successfully!');
+        
+
+        $list_status = Status::where('active', 1)->get(['id', 'name']);
+        $list_category = Category::where('active',1)->get(['id', 'name']);
+        
+        return view('article/edit', ['list_category' => $list_category, 'article' => $article, 'list_status' => $list_status])->with('message', 'Updated Successfully!');
+        // return view('article/edit', ['article' => $article, 'list_status' => $list_status])->with('message', 'Updated Successfully!');
     }
 
     /**

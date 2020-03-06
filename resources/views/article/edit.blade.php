@@ -62,9 +62,7 @@
                         <label for="excerpt" class="col-md-2 col-form-label text-md-right">{{ __('Excerpt') }}</label>
 
                         <div class="col-md-9">
-                            <textarea id="excerpt" type="excerpt" class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" required>
-                            {{ $article->excerpt }}
-                            </textarea>
+                            <textarea id="excerpt" type="excerpt" class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" required>{{ $article->excerpt }}</textarea>
 
                             @error('excerpt')
                                 <span class="invalid-feedback" role="alert">
@@ -91,12 +89,19 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="tags" class="col-md-2 col-form-label text-md-right">{{ __('Tags') }}</label>
-
-                        <div class="col-md-9">
-                            <input id="tags" type="text" class="form-control @error('tags') is-invalid @enderror" name="tags" value="{{ $article->tags }}" required autocomplete="tags" autofocus>
-
-                            @error('tags')
+                        <label for="category" class="col-md-2 col-form-label text-md-right">{{ __('Category') }}</label>
+                        <div class="col-md-2">
+                            <select class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="category" name="category">
+                                @foreach ($list_category as $category)
+                                    @if ($category->id == $article->category_id)
+                                        <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                    @else
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                            
+                            @error('category')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
