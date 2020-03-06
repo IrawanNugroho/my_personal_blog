@@ -89,6 +89,20 @@
                     </div>
 
                     <div class="form-group row">
+                        <label for="author" class="col-md-2 col-form-label text-md-right">{{ __('Author') }}</label>
+
+                        <div class="col-md-9">
+                            <input id="author" type="text" class="form-control @error('author') is-invalid @enderror" name="author" value="{{ $article->author }}" required autocomplete="author" autofocus>
+
+                            @error('author')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label for="category" class="col-md-2 col-form-label text-md-right">{{ __('Category') }}</label>
                         <div class="col-md-2">
                             <select class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="category" name="category">
@@ -102,20 +116,6 @@
                             </select>
                             
                             @error('category')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="author" class="col-md-2 col-form-label text-md-right">{{ __('Author') }}</label>
-
-                        <div class="col-md-9">
-                            <input id="author" type="text" class="form-control @error('author') is-invalid @enderror" name="author" value="{{ $article->author }}" required autocomplete="author" autofocus>
-
-                            @error('author')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

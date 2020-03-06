@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+
 use App\Article;
 use App\Status;
 use App\Category;
@@ -140,12 +143,11 @@ class ArticleController extends Controller
         ]);
 
         $article = Article::find($id);
-        $article->title     = $request->title;
-        $article->slug      = $request->slug;
+        $article->title     = Str::title($request->title);
+        $article->slug      = Str::slug($request->title);
         $article->excerpt   = $request->excerpt;
         $article->content   = $request->content;
         $article->author    = $request->author;
-        $article->slug      = $request->slug;
         $article->status_id = $request->status;
         $article->category_id = $request->category;
         $article->created_by= Auth::id();
@@ -159,7 +161,6 @@ class ArticleController extends Controller
         $list_category = Category::where('active',1)->get(['id', 'name']);
         
         return view('article/edit', ['list_category' => $list_category, 'article' => $article, 'list_status' => $list_status])->with('message', 'Updated Successfully!');
-        // return view('article/edit', ['article' => $article, 'list_status' => $list_status])->with('message', 'Updated Successfully!');
     }
 
     /**
