@@ -48,7 +48,7 @@
                         <label for="slug" class="col-md-2 col-form-label text-md-right">{{ __('Slug') }}</label>
 
                         <div class="col-md-9">
-                            <input id="slug" type="text" class="form-control @error('slug') is-invalid @enderror" name="slug" value="{{ $article->slug }}" required autocomplete="slug" autofocus>
+                            <input id="slug" type="text" class="form-control @error('slug') is-invalid @enderror" name="slug" value="{{ $article->slug }}" disabled>
 
                             @error('slug')
                                 <span class="invalid-feedback" role="alert">
@@ -150,7 +150,7 @@
                                 {{ __('Update') }}
                             </button>
 
-                            <button class="btn btn-basic" onclick="window.location='{{ route("articles.index") }}'">
+                            <button class="btn btn-basic" onclick="window.location='{{ route("articles.index") }}'; return false;">
                                 {{ __('Cancel') }}
                             </button>
                             
