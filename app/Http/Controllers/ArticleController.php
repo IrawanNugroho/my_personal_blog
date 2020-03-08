@@ -211,6 +211,17 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article            = Article::find($id);
+        $article->active    = 0;
+        $article->save();
+        
+        $list_article = DB::table('articles')
+                        ->join('statuses', 'statuses.id', '=', 'articles.status_id')
+                        ->where('articles.active',1)
+                        ->select('articles.id', 'articles.title', 'articles.updated_at', 'statuses.name as status')
+                        ->orderBy('id', 'DESC')
+                        ->paginate(15);
+        
+        return view('article/index', ['list_article' => $list_article])->with('message', 'Data has been deleted!');
     }
 }

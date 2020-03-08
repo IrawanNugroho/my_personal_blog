@@ -26,6 +26,9 @@ Route::group(['prefix' => 'article'], function(){
     route::get('/show/{id}', 'ArticleController@show')->where(['id' => '[0-9]+'])->name('articles.show');
 
     route::post('/', 'ArticleController@store')->name('articles.store');
-    route::post('/{id}', 'ArticleController@update')->name('articles.update');
+    
+    route::post('/{id}', 'ArticleController@update')->where(['id' => '[0-9]+'])->name('articles.update');
+    
+    route::delete('/delete/{id}', 'ArticleController@destroy')->where(['id' => '[0-9]+'])->name('articles.delete');
     
 });

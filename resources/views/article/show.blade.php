@@ -111,9 +111,16 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-9 offset-md-5">
-                            <button class="btn btn-info" onclick="window.location='{{ route("articles.index") }}'">
+                            <form action="{{route('articles.delete',[$article->id])}}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                
+                                <button class="btn btn-info" onclick="window.location='{{ route("articles.index") }}'; return false;">
                                 {{ __('Back To Home') }}
-                            </button>
+                                </button>
+
+                                <button class="btn btn-danger" type="submit">Delete</button>               
+                           </form>
                         </div>
                     </div>
             </div>

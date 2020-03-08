@@ -26,6 +26,7 @@
 
         <div class="card">
             <div class="card-header">{{ __('Edit Article') }}</div>
+
             <div class="card-body">
                 <form method="POST" action="{{ route('articles.update', ['id' => $article->id]) }}">
                     @csrf
@@ -158,6 +159,11 @@
                     </div>
 
                 </form>
+                <form action="{{route('articles.delete',[$article->id])}}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button class="btn btn-danger float-right" type="submit">Delete</button>               
+               </form>
             </div>
         </div>
 
