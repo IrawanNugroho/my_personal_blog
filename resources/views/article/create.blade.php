@@ -44,20 +44,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="slug" class="col-md-2 col-form-label text-md-right">{{ __('Slug') }}</label>
-
-                            <div class="col-md-9">
-                                <input id="slug" type="text" class="form-control @error('slug') is-invalid @enderror" name="slug" value="{{ old('slug') }}" required autocomplete="slug" autofocus>
-
-                                @error('slug')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="excerpt" class="col-md-2 col-form-label text-md-right">{{ __('Excerpt') }}</label>
 
                             <div class="col-md-9">
@@ -88,12 +74,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="tags" class="col-md-2 col-form-label text-md-right">{{ __('Tags') }}</label>
+                            <label for="author" class="col-md-2 col-form-label text-md-right">{{ __('Author') }}</label>
 
                             <div class="col-md-9">
-                                <input id="tags" type="text" class="form-control @error('tags') is-invalid @enderror" name="tags" value="{{ old('tags') }}" required autocomplete="tags" autofocus>
+                                <input id="author" type="text" class="form-control @error('author') is-invalid @enderror" name="author" value="{{ old('author') }}" required autocomplete="author" autofocus>
 
-                                @error('tags')
+                                @error('author')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -102,12 +88,15 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="author" class="col-md-2 col-form-label text-md-right">{{ __('Author') }}</label>
-
-                            <div class="col-md-9">
-                                <input id="author" type="text" class="form-control @error('author') is-invalid @enderror" name="author" value="{{ old('author') }}" required autocomplete="author" autofocus>
-
-                                @error('author')
+                            <label for="category" class="col-md-2 col-form-label text-md-right">{{ __('Category') }}</label>
+                            <div class="col-md-2">
+                                <select class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="category" name="category">
+                                    @foreach ($list_category as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                
+                                @error('category')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -70,6 +70,7 @@ class ArticleController extends Controller
                         ->join('statuses', 'statuses.id', '=', 'articles.status_id')
                         ->where('articles.active',1)
                         ->select('articles.id', 'articles.title', 'articles.updated_at', 'statuses.name as status')
+                        ->orderBy('id', 'DESC')
                         ->paginate(15);
         
         return view('article/index', ['list_article' => $list_article]);
@@ -84,7 +85,9 @@ class ArticleController extends Controller
     {
         // get list of status
         $list_status = Status::where('active', 1)->get(['id', 'name']);
-        return view('article/create')->with('list_status', $list_status);
+        $list_category = Category::where('active',1)->get(['id', 'name']);
+        
+        return view('article/create', ['list_category' => $list_category, 'list_status' => $list_status]);
     }
 
     /**
@@ -97,7 +100,6 @@ class ArticleController extends Controller
     {
         $validatedData = $request->validate([
             'title'     => 'required|string|max:128',
-            'slug'      => 'required|string|max:80',
             'excerpt'   => 'nullable|string|max:255',
             'content'   => 'nullable|string|max:15000',
             'tags'      => 'nullable|string|max:25',
@@ -106,18 +108,18 @@ class ArticleController extends Controller
         ]);
 
         $article = new Article;
-        $article->title     = $request->title;
-        $article->slug      = $request->slug;
+        $article->title     = Str::title($request->title);
+        $article->slug      = $this->createSlug($request->title);
         $article->excerpt   = $request->excerpt;
         $article->content   = $request->content;
         $article->author    = $request->author;
-        $article->slug      = $request->slug;
+        $article->category_id = $request->category;
         $article->status_id = $request->status;
         $article->created_by= Auth::id();
         $article->updated_by= Auth::id();
         $article->save();
 
-        return view('article/index');
+        return redirect()->route('articles.show', ['id' => $article->id])->with('message', 'Article created!');
     }
 
     /**
@@ -131,13 +133,13 @@ class ArticleController extends Controller
         $article = DB::table('articles')
                     ->join('statuses', 'statuses.id', '=', 'articles.status_id')
                     ->join('users', 'users.id', '=', 'articles.updated_by')
-                    ->select('articles.id', 'articles.title', 'articles.content', 'articles.excerpt', 'articles.author', 'articles.slug', 'articles.slug as tags', 'statuses.id as status_id', 'articles.created_at', 'users.name as updated_by', 'articles.updated_at  as last_update')
+                    ->join('categories', 'categories.id', '=', 'articles.category_id')
+                    ->select('articles.id', 'articles.title', 'articles.content', 'articles.excerpt', 'articles.author', 'articles.slug', 'categories.name as category', 'statuses.name as status', 'articles.created_at', 'users.name as updated_by', 'articles.updated_at  as last_update')
                     ->where('articles.active', 1)
                     ->where('articles.id', '=', $id)
                     ->first();
 
-        $list_status = Status::where('active', 1)->get(['id', 'name']);
-        return view('article/show', ['article' => $article, 'list_status' => $list_status]);
+        return view('article/show', ['article' => $article]);
     }
 
     /**
