@@ -224,4 +224,10 @@ class ArticleController extends Controller
         
         return view('article/index', ['list_article' => $list_article])->with('message', 'Data has been deleted!');
     }
+
+    public function store_image()
+    {
+        $imgpath = request()->file('name')->store('uploads', 'public');
+        return response()->json(['location' => '/' . $imgpath]);
+    }
 }

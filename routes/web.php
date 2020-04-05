@@ -30,5 +30,7 @@ Route::group(['prefix' => 'article'], function(){
     route::post('/{id}', 'ArticleController@update')->where(['id' => '[0-9]+'])->name('articles.update');
     
     route::delete('/delete/{id}', 'ArticleController@destroy')->where(['id' => '[0-9]+'])->name('articles.delete');
+
+    route::get('/upload', 'ArticleController@store_image')->name('articles.upload');
     
 });
