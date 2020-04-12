@@ -11,6 +11,8 @@
 
             @include('layouts.partials.about_us')
 
+            @include('layouts.partials.journal')
+
             @yield('content')
 
             @include('layouts.partials.footer')
