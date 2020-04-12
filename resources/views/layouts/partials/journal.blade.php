@@ -11,6 +11,7 @@
     <div class="journal-block">
       <div class="row">
 
+        @foreach ($list_article as $item)
         <div class="col-lg-4 col-md-6">
           <div class="journal-info">
 
@@ -18,16 +19,16 @@
 
             <div class="journal-txt">
 
-              <h4><a href="blog-single.html">SO LETS MAKE THE MOST IS BEAUTIFUL</a></h4>
-              <p class="separator">To an English person, it will seem like simplified English
-              </p>
+              <h4><a href="blog-single.html">{{ $item->title }}</a></h4>
+              <p class="separator">{{ $item->excerpt }}</p>
 
             </div>
 
           </div>
         </div>
+        @endforeach
 
-        <div class="col-lg-4 col-md-6">
+        {{-- <div class="col-lg-4 col-md-6">
           <div class="journal-info">
 
             <a href="blog-single.html"><img src="{{ asset('folio/images/blog-post-2.jpg') }}" class="img-responsive" alt="img"></a>
@@ -57,7 +58,7 @@
             </div>
 
           </div>
-        </div>
+        </div> --}}
 
       </div>
     </div>

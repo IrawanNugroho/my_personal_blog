@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('demo');
-});
+// Route::get('/', function () {
+//     return view('demo');
+// });
+route::get('/', 'FrontendController@index')->name('frontend.index');
 
 Auth::routes(['register' => false]);
 
