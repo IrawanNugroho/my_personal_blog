@@ -14,7 +14,9 @@
 // Route::get('/', function () {
 //     return view('demo');
 // });
-route::get('/', 'FrontendController@index')->name('frontend.index');
+Route::get('/', 'FrontendController@index')->name('frontend.index');
+
+Route::get('/blog/{slug}', 'FrontendController@show')->name('frontend.show');
 
 Auth::routes(['register' => false]);
 
