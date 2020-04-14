@@ -3,7 +3,7 @@
 
   <div class="container">
     <div class="section-title text-center">
-      <h2>blog</h2>
+      <h2>journal</h2>
     </div>
   </div>
 
@@ -15,11 +15,11 @@
         <div class="col-lg-4 col-md-6">
           <div class="journal-info">
 
-          <a href="{{ route('home')}}"><img src="{{ asset('folio/images/blog-post-1.jpg') }}" class="img-responsive" alt="img"></a>
+          <a href="{{ route('frontend.show', $item->slug) }}"><img src="{{ asset('folio/images/blog-post-1.jpg') }}" class="img-responsive" alt="img"></a>
 
             <div class="journal-txt">
 
-              <h4><a href="blog-single.html">{{ $item->title }}</a></h4>
+              <h4><a href="{{ route('frontend.show', $item->slug) }}">{{ $item->title }}</a></h4>
               <p class="separator">{{ $item->excerpt }}</p>
 
             </div>

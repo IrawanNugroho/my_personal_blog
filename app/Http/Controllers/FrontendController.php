@@ -16,7 +16,7 @@ class FrontendController extends Controller
         $article = Article::where('active',1)
                             ->orderBy('id', 'DESC')
                             ->take(3)
-                            ->get(['title', 'excerpt']);
+                            ->get(['title', 'excerpt', 'slug']);
 
         
         return view('welcome', ['list_article' => $article]);

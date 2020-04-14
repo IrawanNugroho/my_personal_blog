@@ -7,7 +7,7 @@
         <body>
             @include('layouts.partials.nav_sub')
             
-            {{-- @include('layouts.partials.journal') --}}
+            @include('layouts.partials.blog')
 
             @include('layouts.partials.footer')
 
