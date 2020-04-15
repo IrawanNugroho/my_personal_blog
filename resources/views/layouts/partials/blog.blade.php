@@ -16,7 +16,7 @@
                       <ul class="list-unstyled mb-0">
                         <li class="author">by:<a href="#">{{ $article->author }}</a></li>
                         <li class="date">date:<a href="#">{{ $article->last_update }}</a></li>
-                        <li class="commont"><i class="ion-ios-heart-outline"></i><a href="#">3 Comments</a></li>
+                        {{-- <li class="commont"><i class="ion-ios-heart-outline"></i><a href="#">3 Comments</a></li> --}}
                       </ul>
                     </div>
                     {!! $article->content !!}
