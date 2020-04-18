@@ -14,6 +14,7 @@ class FrontendController extends Controller
     public function index()
     {
         $article = Article::where('active',1)
+                            ->where('status_id',3)
                             ->orderBy('id', 'DESC')
                             ->take(3)
                             ->get(['title', 'excerpt', 'slug']);

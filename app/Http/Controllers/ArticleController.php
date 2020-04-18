@@ -104,7 +104,7 @@ class ArticleController extends Controller
             'content'   => 'nullable|string|max:15000',
             'tags'      => 'nullable|string|max:25',
             'author'    => 'nullable|string|max:25',
-            'status'    => 'required|integer|max:2'
+            'status'    => 'required|integer|max:3'
         ]);
 
         $article = new Article;
@@ -179,7 +179,7 @@ class ArticleController extends Controller
             'content'   => 'nullable|string|max:15000',
             'tags'      => 'nullable|string|max:25',
             'author'    => 'nullable|string|max:25',
-            'status'    => 'required|integer|max:2'
+            'status'    => 'required|integer|max:3'
         ]);
 
         $article = Article::find($id);
