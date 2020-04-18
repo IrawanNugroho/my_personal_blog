@@ -4,7 +4,7 @@
     <div class="container">
 
       <div class="logo">
-        <a href="{{ route('frontend.index') }}"><img src="{{ asset('folio/images/logo.png') }}" alt="logo"></a>
+        <a href="{{ route('frontend.index') }}">Nugrohouse</a>
       </div>
 
       <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>

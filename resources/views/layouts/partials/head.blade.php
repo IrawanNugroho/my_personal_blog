@@ -26,7 +26,7 @@
 <link href="{{ asset('folio/css/responsive.css') }}" rel="stylesheet">
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{ asset('folio/images/favicon.png') }}">
+<link rel="shortcut icon" href="{{ asset('folio/images/favicon.jpg') }}">
 
 <!-- =======================================================
 Theme Name: Folio
