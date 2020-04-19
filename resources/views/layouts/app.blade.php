@@ -78,16 +78,22 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('article*') ? 'active' : '' }}" href="{{route('articles.index')}}">Article</a>
-                        </li>
+                    @auth
+                        <!-- Left Side Of Navbar -->
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->is('article*') ? 'active' : '' }}" href="{{route('articles.index')}}">Article</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="">User</a>
-                        </li>
-                    </ul>
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->is('gallery*') ? 'active' : '' }}" href="{{route('galleries.index')}}">Gallery</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="">User</a>
+                            </li>
+                        </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">

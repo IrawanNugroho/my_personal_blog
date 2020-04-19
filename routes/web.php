@@ -37,3 +37,7 @@ Route::group(['prefix' => 'article'], function(){
     route::get('/upload', 'ArticleController@store_image')->name('articles.upload');
     
 });
+
+Route::group(['prefix' => 'gallery'], function(){
+    route::get('/', 'GalleryController@index')->name('galleries.index');
+});
