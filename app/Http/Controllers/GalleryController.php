@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Status;
 
 class GalleryController extends Controller
 {
@@ -23,7 +24,8 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+        $list_status = Status::where('active', 1)->get(['id', 'name']);
+        return view('gallery/create', ['list_status' => $list_status]);
     }
 
     /**

@@ -40,4 +40,5 @@ Route::group(['prefix' => 'article'], function(){
 
 Route::group(['prefix' => 'gallery'], function(){
     route::get('/', 'GalleryController@index')->name('galleries.index');
+    route::get('/create', 'GalleryController@create')->name('galleries.create');
 });

@@ -25,7 +25,7 @@
             
             <div class="card">
                 <div class="card-header">Gallery
-                    <button class="btn-small btn-success float-right" onclick="window.location='{{ route("articles.create") }}'">+</button>
+                    <button class="btn-small btn-success float-right" onclick="window.location='{{ route("galleries.create") }}'">+</button>
                 </div>
 
                 <div class="">
