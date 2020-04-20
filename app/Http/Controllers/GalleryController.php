@@ -7,6 +7,11 @@ use App\Status;
 
 class GalleryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +41,15 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'image' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+		$file = $request->file('image');
+		$file_name = time()."_".$file->getClientOriginalName();
+        $path = $file->store('public/file');
+ 
+		return view('gallery/index')->with('message', 'Image Uploaded!');
     }
 
     /**

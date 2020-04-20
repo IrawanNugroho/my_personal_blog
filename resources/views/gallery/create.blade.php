@@ -23,10 +23,10 @@
         </div>
         @endif
             <div class="card">
-                <div class="card-header">{{ __('Article') }}</div>
+                <div class="card-header">{{ __('Image') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('articles.store') }}">
+                    <form method="POST" action="{{ route('galleries.store') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -45,6 +45,12 @@
 
                         <div class="form-group row">
                             <label for="excerpt" class="col-md-2 col-form-label text-md-right">{{ __('Image') }}</label>
+                            <div class="col-md-9">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="image" name="image" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="image">Choose file</label>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group row">
