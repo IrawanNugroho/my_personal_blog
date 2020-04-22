@@ -47,7 +47,7 @@
                             <label for="excerpt" class="col-md-2 col-form-label text-md-right">{{ __('Excerpt') }}</label>
 
                             <div class="col-md-9">
-                                <textarea id="excerpt" type="excerpt" class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" value="{{ old('excerpt') }}" required>
+                                <textarea id="excerpt" type="excerpt" class="form-control @error('excerpt') is-invalid @enderror" name="excerpt" value="{{ old('excerpt') }}" maxlength="250" required>
                                 </textarea>
 
                                 @error('excerpt')

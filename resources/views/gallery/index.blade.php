@@ -38,31 +38,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{-- <table class="table table-hover">
-                        <thead>
-                            <tr>
-                            <th><center>Title</center></th>
-                            <th><center>Status</center></th>
-                            <th><center>Last Update</center></th>
-                            <th><center>Actions</center></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($list_article as $item)
-                            <tr>
-                                <td><a href="{{ route('articles.show', ['id'=> $item->id]) }}">{{$item->title}}</a></td>
-                                <td><center>{{$item->status}}</center></td>
-                                <td><center>{{$item->updated_at}}</center></td>
-                                <td>
-                                    <center>
-                                        <button type="button" class="btn-small btn-warning" onclick="window.location='{{ route("articles.edit", ["id" => $item->id]) }}'">Edit</button>
-                                    </center>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table> --}}
+                    
+                    <div class="row">
+                        @foreach ($list_image as $item)
+                            <img src="{{ url('storage/images/'.$item->image) }}" alt="" title="" class="img-thumbnail col-md-3"/>    
+                        @endforeach
+                    </div>
                 </div>
             </div>
             {{-- {{ $list_article->links() }} --}}
