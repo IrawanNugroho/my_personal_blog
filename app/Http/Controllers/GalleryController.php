@@ -55,29 +55,28 @@ class GalleryController extends Controller
 
         $file = $request->file('image');
         
-        // $file_name = time()."_".$file->getClientOriginalName();
-        // $input['imagename'] = time().'_cooks.'.$file->extension();
-        // $destinationPath = public_path('/thumbnail');
-        // $img = Intervention::make($file->path());
-        // $img->resize(100, 100, function ($constraint) {
-        //     $constraint->aspectRatio();
-        // })->save($destinationPath.'/'.$input['imagename']);
-
-
+        // store image to storage
         $path = $file->store('public/images');
-        $path = str_replace('public/images', '', $path);
+        $image_name = str_replace('public/images', '', $path);
+
+        // create thumbnail
+        // $file_name = time()."_".$file->getClientOriginalName();
+        $thumbnail_full_path = storage_path().'/app/public/thumbnail';        
+        $img = Intervention::make($file->path());
+        $img->resize(200, 200, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($thumbnail_full_path.'/'.$image_name);
+
+        // write to database
         $image = Image::create([
                 'title'         => $request->title,
                 'description'   => $request->excerpt,
                 'credit'        => $request->credit,
-                'image'         => $path,
-                'thumbnail'     => $path,
+                'image'         => $image_name,
                 'status_id'     => $request->status,
                 'created_by'    => Auth::id(),
                 'updated_by'    => Auth::id()
         ]);
-
-
 
         $list_image = Image::where('active', 1)->get();
  

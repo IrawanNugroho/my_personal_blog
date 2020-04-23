@@ -41,7 +41,7 @@
                     
                     <div class="row">
                         @foreach ($list_image as $item)
-                            <img src="{{ url('storage/images/'.$item->image) }}" alt="" title="" class="img-thumbnail col-md-3"/>    
+                            <img src="{{ url('storage/thumbnail/'.$item->image) }}" alt="" title="" class="img-thumbnail col-md-3"/>    
                         @endforeach
                     </div>
                 </div>
