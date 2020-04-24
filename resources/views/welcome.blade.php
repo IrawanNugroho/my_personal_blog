@@ -11,7 +11,7 @@
 
             @include('layouts.partials.about_us')
 
-            @include('layouts.partials.journal')
+            {{-- @include('layouts.partials.journal') --}}
 
             @include('layouts.partials.footer')
 
