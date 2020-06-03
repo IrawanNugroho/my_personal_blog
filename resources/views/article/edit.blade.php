@@ -68,11 +68,10 @@
 
                                 <!-- The Modal -->
                                 <div id="myModal" class="modalku">
-
                                     <!-- Modal content -->
                                     <div class="modal-contentku">
-                                    <span class="close">&times;</span>
-                                    <p>Some text in the Modal..</p>
+                                        <span class="close">&times;</span>
+                                        <p>Some text in the Modal..</p>
                                     </div>
                                 
                                 </div>
