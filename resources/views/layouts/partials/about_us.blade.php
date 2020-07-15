@@ -39,14 +39,14 @@
 
             <i class="ion-ios-color-wand-outline"></i>
             <span>Web Development</span>
-            <p class="separator">Design creates culture. Culture shapes values. Values determine the future.</p>
+            <p class="separator">keep it simple, reusable and reliable</p>
 
           </div>
 
           <div class="services-block">
 
             <i class="ion-ios-lightbulb-outline"></i>
-            <span>Swift</span>
+            <span>IOS</span>
             <p class="separator">Stay Hungry, Stay Foolish</p>
 
           </div>
@@ -58,6 +58,15 @@
             <p class="separator">If you mine the data hard enough, you can also find messages from God. </p>
 
           </div>
+
+          <div class="services-block">
+
+            <i class="ion-ios-browsers-outline"></i>
+            <span>UI/UX DESIGN</span>
+            <p class="separator">Design creates culture. Culture shapes values. Values determine the future.</p>
+
+          </div>
+
         </div>
 
     </div>
