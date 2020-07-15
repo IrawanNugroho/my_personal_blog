@@ -37,25 +37,17 @@
 
           <div class="services-block">
 
-            <i class="ion-ios-browsers-outline"></i>
+            <i class="ion-ios-color-wand-outline"></i>
             <span>Web Development</span>
-            <p class="separator">It's fun to code on Laravel. On the other hand, Django is nice to be explored.</p>
+            <p class="separator">Design creates culture. Culture shapes values. Values determine the future.</p>
 
           </div>
 
           <div class="services-block">
 
             <i class="ion-ios-lightbulb-outline"></i>
-            <span>Stay Hungry, Stay Foolish</span>
-            <p class="separator">I love to read. It makes me growth everyday.</p>
-
-          </div>
-
-          <div class="services-block">
-
-            <i class="ion-ios-color-wand-outline"></i>
-            <span>WEB DESIGN</span>
-            <p class="separator">Design creates culture. Culture shapes values. Values determine the future.</p>
+            <span>Swift</span>
+            <p class="separator">Stay Hungry, Stay Foolish</p>
 
           </div>
 
