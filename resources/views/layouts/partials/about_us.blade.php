@@ -39,7 +39,7 @@
 
             <i class="ion-ios-color-wand-outline"></i>
             <span>Web Development</span>
-            <p class="separator">keep it simple, reusable and reliable</p>
+            <p class="separator">Keep it simple, reusable and reliable</p>
 
           </div>
 
