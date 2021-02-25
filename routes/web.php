@@ -37,3 +37,16 @@ Route::group(['prefix' => 'article'], function(){
     route::get('/upload', 'ArticleController@store_image')->name('articles.upload');
     
 });
+
+Route::group(['prefix' => 'project'], function(){
+    route::get('/', 'ProjectController@index')->name('projects.index');
+    route::get('/create', 'ProjectController@create')->name('articles.create');
+    route::get('/edit/{id}', 'ProjectController@edit')->where(['id' => '[0-9]+'])->name('projects.edit');
+    route::get('/show/{id}', 'ProjectController@show')->where(['id' => '[0-9]+'])->name('projects.show');
+
+    route::post('/', 'ProjectController@store')->name('projects.store');
+    
+    route::post('/{id}', 'ProjectController@update')->where(['id' => '[0-9]+'])->name('projects.update');
+    
+    route::delete('/delete/{id}', 'ProjectController@destroy')->where(['id' => '[0-9]+'])->name('projects.delete');    
+});
