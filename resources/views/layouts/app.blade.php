@@ -85,6 +85,10 @@
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link {{ request()->is('project*') ? 'active' : '' }}" href="{{route('projects.index')}}">Portfolio</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="">User</a>
                         </li>
                     </ul>

@@ -40,7 +40,7 @@ Route::group(['prefix' => 'article'], function(){
 
 Route::group(['prefix' => 'project'], function(){
     route::get('/', 'ProjectController@index')->name('projects.index');
-    route::get('/create', 'ProjectController@create')->name('articles.create');
+    route::get('/create', 'ProjectController@create')->name('projects.create');
     route::get('/edit/{id}', 'ProjectController@edit')->where(['id' => '[0-9]+'])->name('projects.edit');
     route::get('/show/{id}', 'ProjectController@show')->where(['id' => '[0-9]+'])->name('projects.show');
 

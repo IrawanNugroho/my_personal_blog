@@ -44,10 +44,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="content" class="col-md-2 col-form-label text-md-right">{{ __('Content') }}</label>
+                            <label for="content" class="col-md-2 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-9">
-                                <textarea id="content" rows="20" type="text" class="form-control content" name="content" value="{{ old('content') }}">
+                                <textarea id="content" rows="20" type="text" class="form-control content" name="description" value="">
                                 </textarea>
 
                                 <!-- @error('content')

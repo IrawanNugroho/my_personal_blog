@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 use App\Status;
+use App\Project;
+use DB;
 
 class ProjectController extends Controller
 {
@@ -14,7 +19,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $list_article = DB::table('projects')
+                        ->join('statuses', 'statuses.id', '=', 'projects.status_id')
+                        ->where('projects.active',1)
+                        ->select('projects.id', 'projects.title', 'projects.updated_at', 'statuses.name as status')
+                        ->orderBy('id', 'DESC')
+                        ->paginate(15);
+        
+        return view('project/index', ['list_article' => $list_article]);
     }
 
     /**
@@ -39,6 +51,21 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         //
+        $validatedData = $request->validate([
+            'title'         => 'required|string|max:128',
+            'description'   => 'nullable|string|max:1000',
+            'status'        => 'required|integer|max:3'
+        ]);
+
+        $project = new Project;
+        $project->title         = Str::title($request->title);
+        $project->description   = $request->description;
+        $project->status_id     = $request->status;
+        $project->created_by    = Auth::id();
+        $project->updated_by    = Auth::id();
+        $project->save();
+
+        return redirect()->route('projects.show', ['id' => $project->id])->with('message', 'Project created!');
     }
 
     /**
@@ -50,6 +77,16 @@ class ProjectController extends Controller
     public function show($id)
     {
         //
+        $project = DB::table('projects')
+                    ->join('statuses', 'statuses.id', '=', 'projects.status_id')
+                    ->join('users', 'users.id', '=', 'projects.updated_by')
+                    ->select('projects.id', 'projects.title', 'projects.description', 'statuses.name as status', 'projects.created_at', 'users.name as updated_by', 'projects.updated_at  as last_update')
+                    ->where('projects.active', 1)
+                    ->where('projects.id', '=', $id)
+                    ->first();
+
+        return view('project/show', ['project' => $project]);
+        // return dd($project);
     }
 
     /**
