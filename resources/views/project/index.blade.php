@@ -49,7 +49,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($list_article as $item)
+                            @foreach ($list_project as $item)
                             <tr>
                                 <td><a href="{{ route('projects.show', ['id'=> $item->id]) }}">{{$item->title}}</a></td>
                                 <td><center>{{$item->status}}</center></td>
@@ -65,7 +65,7 @@
                     </table>
                 </div>
             </div>
-            {{ $list_article->links() }}
+            {{ $list_project->links() }}
         </div>
     </div>
 </div>

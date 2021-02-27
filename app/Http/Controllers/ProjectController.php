@@ -19,14 +19,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $list_article = DB::table('projects')
+        $list_project = DB::table('projects')
                         ->join('statuses', 'statuses.id', '=', 'projects.status_id')
                         ->where('projects.active',1)
                         ->select('projects.id', 'projects.title', 'projects.updated_at', 'statuses.name as status')
                         ->orderBy('id', 'DESC')
                         ->paginate(15);
         
-        return view('project/index', ['list_article' => $list_article]);
+        return view('project/index', ['list_project' => $list_project]);
     }
 
     /**
@@ -97,7 +97,16 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = DB::table('projects')
+                    ->join('statuses', 'statuses.id', '=', 'projects.status_id')
+                    ->select('projects.id', 'projects.title', 'projects.description', 'statuses.id as status_id')
+                    ->where('projects.active', 1)
+                    ->where('projects.id', '=', $id)
+                    ->first();
+
+        $list_status = Status::where('active', 1)->get(['id', 'name']);
+        
+        return view('project/edit', ['project' => $project, 'list_status' => $list_status]);
     }
 
     /**
@@ -109,7 +118,27 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $validatedData = $request->validate([
+            'title'         => 'required|string|max:128',
+            'description'   => 'nullable|string|max:1000',
+            'status'        => 'required|integer|max:3'
+        ]);
+
+        $project = Project::find($id);
+        $project->title         = Str::title($request->title);
+        $project->description   = $request->description;
+        $project->status_id     = $request->status;
+        $project->created_by    = Auth::id();
+        $project->updated_by    = Auth::id();
+        $project->save();
+
+        
+        
+
+        $list_status = Status::where('active', 1)->get(['id', 'name']);
+        
+        return view('project/edit', ['project' => $project, 'list_status' => $list_status])->with('message', 'Updated Successfully!');
     }
 
     /**
@@ -120,6 +149,17 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project            = Project::find($id);
+        $project->active    = 0;
+        $project->save();
+        
+        $list_project = DB::table('projects')
+                        ->join('statuses', 'statuses.id', '=', 'projects.status_id')
+                        ->where('projects.active',1)
+                        ->select('projects.id', 'projects.title', 'projects.updated_at', 'statuses.name as status')
+                        ->orderBy('id', 'DESC')
+                        ->paginate(15);
+        
+        return view('project/index', ['list_project' => $list_project])->with('message', 'Data has been deleted!');
     }
 }
