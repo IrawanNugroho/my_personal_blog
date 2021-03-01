@@ -65,7 +65,7 @@ class ProjectController extends Controller
         $project->updated_by    = Auth::id();
         $project->save();
 
-        return redirect()->route('projects.show', ['id' => $project->id])->with('message', 'Project created!');
+        return redirect()->route('projects.edit', ['id' => $project->id])->with('message', 'Project created!');
     }
 
     /**

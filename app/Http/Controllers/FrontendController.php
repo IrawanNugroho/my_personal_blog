@@ -8,19 +8,27 @@ use DB;
 use App\Article;
 use App\Status;
 use App\Category;
+use App\Project;
 
 class FrontendController extends Controller
 {
     public function index()
     {
-        $article = Article::where('active',1)
+        // $article = Article::where('active',1)
+        //                     ->where('status_id',3)
+        //                     ->orderBy('id', 'DESC')
+        //                     ->take(3)
+        //                     ->get(['title', 'excerpt', 'slug']);
+
+        $projects = Project::where('active',1)
                             ->where('status_id',3)
                             ->orderBy('id', 'DESC')
-                            ->take(3)
-                            ->get(['title', 'excerpt', 'slug']);
+                            ->take(4)
+                            ->get(['title', 'description']);
+
 
         
-        return view('welcome', ['list_article' => $article]);
+        return view('welcome', ['projects' => $projects]);
     }
 
 

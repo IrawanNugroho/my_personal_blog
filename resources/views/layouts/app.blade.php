@@ -14,6 +14,7 @@
     <script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
     <script>
         tinymce.init({
+            // max_chars:370,
             selector:'textarea.content',
             // width: 900,
             // height: 300
@@ -22,6 +23,39 @@
                     editor.save();
                 });
             },
+
+            //character limiter
+            // function (ed) {
+            //     var allowedKeys = [8, 37, 38, 39, 40, 46]; // backspace, delete and cursor keys
+            //     ed.on('keydown', function (e) {
+            //         if (allowedKeys.indexOf(e.keyCode) != -1) return true;
+            //         if (tinymce_getContentLength() + 1 > this.settings.max_chars) {
+            //             e.preventDefault();
+            //             e.stopPropagation();
+            //             return false;
+            //         }
+            //         return true;
+            //     });
+            //     ed.on('keyup', function (e) {
+            //         tinymce_updateCharCounter(this, tinymce_getContentLength());
+            //     });
+            // },
+            // init_instance_callback: function () { // initialize counter div
+            //     $('#' + this.id).prev().append('<div class="char_count" style="text-align:right"></div>');
+            //     tinymce_updateCharCounter(this, tinymce_getContentLength());
+            // },
+            // paste_preprocess: function (plugin, args) {
+            //     var editor = tinymce.get(tinymce.activeEditor.id);
+            //     var len = editor.contentDocument.body.innerText.length;
+            //     var text = $(args.content).text();
+            //     if (len + text.length > editor.settings.max_chars) {
+            //         alert('Pasting this exceeds the maximum allowed number of ' + editor.settings.max_chars + ' characters.');
+            //         args.content = '';
+            //     } else {
+            //         tinymce_updateCharCounter(editor, len + text.length);
+            //     }
+            // },
+            
             plugins: [
                 "advlist autolink lists link image charmap print preview anchor",
                 "searchreplace visualblocks code fullscreen",
@@ -32,30 +66,30 @@
                 '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
                 '//www.tinymce.com/css/codepen.min.css'
             ],
-            image_title: true,
-            automatic_uploads: true,
-            images_upload_url: '/upload',
-            file_picker_types: 'image',
-            file_picker_callback: function(cb, value, meta) {
-                var input = document.createElement('input');
-                input.setAttribute('type', 'file');
-                input.setAttribute('accept', 'image/*');
-                input.onchange = function() {
-                    var file = this.files[0];
+            // image_title: true,
+            // automatic_uploads: true,
+            // images_upload_url: '/upload',
+            // file_picker_types: 'image',
+            // file_picker_callback: function(cb, value, meta) {
+            //     var input = document.createElement('input');
+            //     input.setAttribute('type', 'file');
+            //     input.setAttribute('accept', 'image/*');
+            //     input.onchange = function() {
+            //         var file = this.files[0];
 
-                    var reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onload = function () {
-                        var id = 'blobid' + (new Date()).getTime();
-                        var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
-                        var base64 = reader.result.split(',')[1];
-                        var blobInfo = blobCache.create(id, file, base64);
-                        blobCache.add(blobInfo);
-                        cb(blobInfo.blobUri(), { title: file.name });
-                    };
-                };
-                input.click();
-            }
+            //         var reader = new FileReader();
+            //         reader.readAsDataURL(file);
+            //         reader.onload = function () {
+            //             var id = 'blobid' + (new Date()).getTime();
+            //             var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+            //             var base64 = reader.result.split(',')[1];
+            //             var blobInfo = blobCache.create(id, file, base64);
+            //             blobCache.add(blobInfo);
+            //             cb(blobInfo.blobUri(), { title: file.name });
+            //         };
+            //     };
+            //     input.click();
+            // }
         });
     </script>
 

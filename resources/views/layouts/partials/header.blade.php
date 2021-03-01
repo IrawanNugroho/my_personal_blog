@@ -7,7 +7,7 @@
 
             <ul class="list-unstyled list-social">
             <li><a href="https://github.com/IrawanNugroho"><i class="ion-social-github"></i></a></li>
-            <li><a href="https://www.linkedin.com/in/irawan-setyo-adhi-nugroho-4a5018b6/"><i class="ion-social-linkedin"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/irawan-setyo-adhi-nugroho-0b9350207/"><i class="ion-social-linkedin"></i></a></li>
             </ul>
         </div>
     </div>
