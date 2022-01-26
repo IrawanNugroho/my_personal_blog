@@ -18,7 +18,7 @@
                 I'am a Software Engineer. I feel challenged to develop applications with significant impact and contribution for human being.
             </p>
             <p class="separator">
-                My name is Irawan Setyo Adhi Nugroho. My parents call me Adhi. Since Irawan is my first name which listed on students list, therefore most of my friends call me as Irawan. Currenlty , I work as a programmer at Harian Kompas.
+                My name is Irawan Setyo Adhi Nugroho. My parents call me Adhi. Since Irawan is my first name which listed on students list, therefore most of my friends call me as Irawan.
             </p>
 
           </div>
